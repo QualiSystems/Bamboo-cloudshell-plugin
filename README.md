@@ -1,12 +1,12 @@
 # Bamboo-CloudShell-Sandbox-Plugin
 
-##Prerequisite
+## Prerequisite
 
 1) CloudShell 8.0 and above, 'CloudShell Sandbox API' component must be installed.
 
 2) Bamboo server 5.13 and above.
 
-##Architecture
+## Architecture
 
 1) open port between Bamboo and the CloudShell Sandbox API Server (82 by default but configurable)
 
@@ -28,7 +28,7 @@
 
 3) Fill up all required fields.
 
-![Alt text](Pics/administration.png?raw=true)
+![Alt text](pics/administration.png?raw=true)
 
 ### Adding a CloudShell task
 
@@ -36,17 +36,17 @@ Use "CloudShell Sandbox Builder" task to start a CloudShell Sandbox during Bambo
 The Sandbox details will be available using environment variables in other tasks in the build.
 
 CloudShell Task builder
-![Alt text](Pics/cloudshell-task.png?raw=true)
+![Alt text](pics/cloudshell-task.png?raw=true)
 
 CloudShell Task builder parameters
-![Alt text](Pics/cloudshell-taskconfiguration.png?raw=false)
+![Alt text](pics/cloudshell-taskconfiguration.png?raw=false)
 
 Cloudshell Sandbox information via environment variables
-![Alt text](Pics/cloudshell-environmentvariables.png?raw=true)
+![Alt text](pics/cloudshell-environmentvariables.png?raw=true)
 
-####Note 1: Sandboxes created during the job execution will be stopped after the job will end. Teardown proccess will be executed and tehe job will wait till completed before ending.
+#### Note 1: Sandboxes created during the job execution will be stopped after the job will end. Teardown proccess will be executed and tehe job will wait till completed before ending.
  
-####Note 2: CloudShell Bamboo plugin supprts only one Sandbox per job. 
+#### Note 2: CloudShell Bamboo plugin supprts only one Sandbox per job. 
 
 Enjoy
 Tomer
