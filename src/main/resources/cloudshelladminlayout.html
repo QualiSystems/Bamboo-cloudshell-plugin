@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>${i18n.getText("cloudshell-admin.label")}</title>
+    <meta name="decorator" content="atl.admin">
+  </head>
+  <body>
+    <form id="admin" class="aui" method="POST">
+
+    <div class="field-group">
+            <label for="name">${i18n.getText("cloudshell-admin.url")}</label>
+            <input type="text" id="url" name="url" class="text" value="${url}">
+            <br />
+            <span>${i18n.getText("cloudshell-admin.url.details")}</span>
+            <span class="errorText">${url_error}</span>
+    </div>
+
+    <div class="field-group">
+            <label for="name">${i18n.getText("cloudshell-admin.user")}</label>
+            <input type="text" id="user" name="user" class="text" value="${user}">
+            <br />
+            <span class="errorText">${user_error}</span>
+    </div>
+
+    <div class="field-group">
+            <label for="name">${i18n.getText("cloudshell-admin.password")}</label>
+            <input type="text" id="password" name="password" class="text" value="${password}">
+            <br />
+            <span class="errorText">${password_error}</span>
+    </div>
+
+    <div class="field-group">
+            <label for="name">${i18n.getText("cloudshell-admin.domain")}</label>
+            <input type="text" id="domain" name="domain" class="text" value="${domain}">
+            <br />
+            <span class="errorText">${domain_error}</span>
+    </div>
+
+        <div class="field-group">
+            <span class="errorText">${general_error}</span>
+            <span class="log-viewer-green">${general_msg}</span>
+        </div>
+
+     <div class="field-group">
+        <input type="submit" value="Test Connection & Save" class="button">
+      </div>
+    </form>
+  </body>
+</html>

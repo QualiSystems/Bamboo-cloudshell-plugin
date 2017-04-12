@@ -1,0 +1,52 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/cloudshell_logo.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <taskType key="task.cloudshell.build" name="CloudShell Sandbox Builder" class="com.quali.cloudshell.bamboo.sandbox.plugin.build.StartSandboxTask">
+        <description>Create a CloudShell Sandbox</description>
+        <category name="builder" />
+
+        <configuration class="com.quali.cloudshell.bamboo.sandbox.plugin.build.CloudShellTaskConfigurator" />
+        <resource type="freemarker" name="edit" location="templates/editCloudshellTask.ftl" />
+        <resource type="download" name="icon" location="images/cloudshell.png"/>
+    </taskType>
+
+    <component-import key="pluginSettingsFactory"
+                      interface="com.atlassian.sal.api.pluginsettings.PluginSettingsFactory" />
+    <component-import key="transactionTemplate"
+                      interface="com.atlassian.sal.api.transaction.TransactionTemplate" />
+
+    <component-import key="velocity-renderer" interface="com.atlassian.templaterenderer.TemplateRenderer" />
+
+    <buildProcessor key="cloudShellSandboxesCleanup" name="CloudShell Sandboxes Cleanup" class="com.quali.cloudshell.bamboo.sandbox.plugin.SandboxCleanupProcessor">
+        <skipIfFailed>false</skipIfFailed>
+        <description>Cleans up CloudShell Sandboxes started by CloudShell tasks</description>
+    </buildProcessor>
+
+    <servlet key="CloudShell Admin Servlet"
+             class="com.quali.cloudshell.bamboo.sandbox.plugin.servlet.AdminServlet">
+        <url-pattern>/cloudshell/admin</url-pattern>
+    </servlet>
+
+    <web-section name="CloudShellAdmin" i18n-name-key="cloudshell-admin.name"
+                 key="cloudshell-admin" location="system.admin" weight="10">
+        <description key="cloudshell-admin.description">The CloudShell Administration Plugin
+        </description>
+        <label key="cloudshell-settings-page.label" />
+    </web-section>
+    <web-item name="UserKeySettingsPage" i18n-name-key="cloudshell-settings-page.name"
+              key="cloudshell-settings-page" section="system.admin/cloudshell-admin"
+              weight="10">
+        <description key="cloudshell-settings-page.description">CloudShell Configuration Page</description>
+        <label key="cloudshell-settings-page.name"></label>
+        <link linkId="cloudshell-settings-page-link">/plugins/servlet/cloudshell/admin</link>
+    </web-item>
+
+    <resource type="i18n" name="i18n" location="cloudshell"/>
+
+</atlassian-plugin>
